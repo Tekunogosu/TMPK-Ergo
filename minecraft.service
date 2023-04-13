@@ -1,0 +1,17 @@
+[Unit]
+Description=TMPK: Ergo v0.3.1 Minecraft Server
+After=network.target
+
+[Service]
+User=minecraft
+#User=theysa
+Group=minecraft
+Type=forking
+WorkingDirectory=/mnt/catalyst/tmpk/ergo-v0.3.1/
+ExecStart=/usr/bin/tmux new-session -s minecraft -n minecraft -d ./run.sh 
+ExecStop=/usr/bin/tmux send-keys -t minecraft stop C-m
+Restart=no
+
+
+[Install]
+WantedBy=multi-user.target
